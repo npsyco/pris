@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app
 from werkzeug.utils import secure_filename
-from ..models import db, Customer, CartProduct, Product, CustomerProduct
+from ..models import db, Customer, Product, CustomerProduct
+
 import os
 import pandas as pd
 
@@ -21,6 +22,8 @@ def process_file(filepath):
 
 @cart_bp.route('/cart', methods=['GET', 'POST'])
 def cart():
+    from ..models.cart_product import CartProduct
+
     if request.method == 'POST':
         customer_name = request.form['customer_name']
         customer_email = request.form['customer_email']

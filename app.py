@@ -10,11 +10,13 @@ from app.database import db as database
 import sys
 import os
 
+# Add root directory to path
 root_directory = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.append(root_directory)
 
 load_dotenv() # Load env var from .env
 
+# Initialize the Flask app
 app = Flask(__name__)
 
 # Configuration
@@ -31,5 +33,6 @@ app.register_blueprint(upload_bp)
 app.register_blueprint(cart_bp)
 app.register_blueprint(product_selection_bp)
 
+# Create the database
 if __name__ == '__main__':
     app.run(debug=True)
