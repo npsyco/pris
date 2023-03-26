@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prisliste</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/style.css') }}">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="{{ url_for('index') }}">Home</a></li>
+          <li><a href="{{ url_for('product_selection') }}">Select Products</a></li>
+          <li><a href="{{ url_for('cart') }}">Cart</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1>Welcome to Prisliste</h1>
+      <form method="post" enctype="multipart/form-data">
+        <label for="file">Select an XLSX file to upload:</label>
+        <input type="file" name="file" id="file" required>
+        <button type="submit">Upload</button>
+      </form>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class="flash-messages">
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+    </main>
+  </body>
+</html>

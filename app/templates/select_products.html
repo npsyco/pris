@@ -1,0 +1,10 @@
+<ul class="product-list">
+    {% for product in products %}
+      <li>
+        <input type="checkbox" name="product" value="{{ product.id }}">
+        <span class="product-name">{{ product.name }}</span>
+        <span class="product-price">{{ product.price }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+  
